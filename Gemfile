@@ -33,3 +33,12 @@ end
 gem "guard-bundler", ">= 0.1.3", :group => :development
 gem "guard-rails", ">= 0.0.3", :group => :development
 gem "guard-rspec", ">= 0.4.3", :group => :development
+
+gem "annotate", "~> 2.4.1.beta1"
+
+group :development, :test do 
+  gem "puma"
+  gem "foreman"
+  gem "guard-annotate"
+  gem "shoulda-matchers"
+end
