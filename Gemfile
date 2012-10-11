@@ -36,9 +36,12 @@ gem "guard-rspec", ">= 0.4.3", :group => :development
 
 gem "annotate", "~> 2.4.1.beta1"
 
+gem "uuid"
+
 group :development, :test do 
   gem "puma"
   gem "foreman"
   gem "guard-annotate"
   gem "shoulda-matchers"
+  gem "webrat"
 end

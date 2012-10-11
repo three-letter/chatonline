@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
 
 
   def create
-    auth = request.env["omniauth.auth"]
     user = User.where(:github_id => auth['uid']).first || User.create_with_omniauth(auth)
     session[:user_id] = user.id
     redirect_to root_url, :notice => 'Signed in!'
@@ -19,6 +18,10 @@ class SessionsController < ApplicationController
 
   def failure
     redirect_to root_url, :alert => "Authentication error: #{params[:message].humanize}"
+  end
+
+  def auth
+    auth = request.env["omniauth.auth"]
   end
 
 end

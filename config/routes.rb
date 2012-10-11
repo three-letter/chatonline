@@ -1,5 +1,8 @@
 Chatonline::Application.routes.draw do
-  resources :users, :only => [ :show, :edit, :update ]
+  root :to => "channels#index", constraints: User
+  root :to => "sessions#new", constraints: lambda { |request| !User.matches?(request) }
+  
+  resources :channels, :only => [ :index, :show, :create ]
 
   match '/auth/:provider/callback' => 'sessions#create'
 
@@ -9,6 +12,7 @@ Chatonline::Application.routes.draw do
 
   match '/auth/failure' => 'sessions#failure'
 
-  root :to => "home#index"
+  match ':controller(/:action(/:id))(.:format)'
+    
 
 end
