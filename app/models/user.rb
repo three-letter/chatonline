@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     create! do |user|
       user.github_id = auth['uid']
       if auth['info']
-         user.name = auth['info']['nickname'] || ""
+        user.name = auth['info']['nickname'] || ""
       end
     end
   end
